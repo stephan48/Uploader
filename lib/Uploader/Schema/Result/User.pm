@@ -13,8 +13,7 @@ __PACKAGE__->add_columns(
         data_type => "SERIAL",
         default_value => undef,
         is_nullable => 0,
-        size => 11,
-    },
+	},
     "username",
     {
         data_type =>"TEXT",
@@ -59,7 +58,7 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-__PACKAGE__->has_many('map_user_roles' => 'LinuxRulz::Schema::Result::UserRoles',{ "foreign.userid" => "self.id" });
+__PACKAGE__->has_many('map_user_roles' => 'Uploader::Schema::Result::UserRole',{ "foreign.userid" => "self.id" });
 __PACKAGE__->many_to_many(roles => 'map_user_roles', 'role');
 
 

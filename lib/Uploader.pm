@@ -19,6 +19,7 @@ use parent qw/Catalyst/;
 use Catalyst::Log::Log4perl;
 
 use Catalyst qw/-Debug
+				+CatalystX::SimpleLogin
                 ConfigLoader
                 Static::Simple
 
@@ -47,6 +48,9 @@ our $VERSION = '0.01';
 __PACKAGE__->config(
 	name => 'Uploader',
 	encoding => 'UTF-8',
+	'Controller::Login' => {
+	    traits => ['Logout'],
+    },
 );
 
 __PACKAGE__->log( Catalyst::Log::Log4perl->new(__PACKAGE__->path_to('Log4perl.conf')->stringify ) );

@@ -22,8 +22,9 @@ requires 'Catalyst::Plugin::Session::Store::FastMmap' => '0';
 requires 'Catalyst::Plugin::Session::State::Cookie' => '0';
 requires 'Catalyst::Plugin::Unicode::Encoding' => 0;
 requires 'Config::JFDI' => 0;
+requires 'DBIx::Class' => 0;
+requires 'CatalystX::SimpleLogin';
 
-Config::JFDI
 
 catalyst;
 

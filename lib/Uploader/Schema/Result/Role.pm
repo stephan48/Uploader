@@ -10,10 +10,9 @@ __PACKAGE__->table("role");
 __PACKAGE__->add_columns(
   "id",
   {
-    data_type => "INTEGER",
+    data_type => "SERIAL",
     default_value => undef,
     is_nullable => 1,
-    size => undef,
   },
   "role",
   {

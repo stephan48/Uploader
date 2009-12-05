@@ -16,7 +16,7 @@ GetOptions(
         'p|preversion:s'  => \$preversion,
 ) or die pod2usage;
 
-my $config = Config::JFDI->new(name => "linuxrulz", path => "/home/linuxrulz/catalyst/LinuxRulz/");
+my $config = Config::JFDI->new(name => "uploader", path => "$FindBin::Bin/../");
 
 my $schema = Uploader::Schema->connect($config->get->{'Model::DataBase'}->{'connect_info'});
 
@@ -30,5 +30,5 @@ if ($version && $preversion) {
     print "creating unversioned full dump\n";
 }
 
-my $sql_dir = '/home/stephan/catalyst/Uploader/root/sql/';
+my $sql_dir = "$FindBin::Bin/../root/sql/";
 $schema->create_ddl_dir( 'PostgreSQL', $version, $sql_dir, $preversion );

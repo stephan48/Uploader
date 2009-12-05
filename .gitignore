@@ -1,1 +1,6 @@
-*.log
+uploader_local.conf
+var/log/uploader.log
+blib
+Makefile
+Makefile.old
+Meta.yml

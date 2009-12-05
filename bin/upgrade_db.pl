@@ -7,7 +7,7 @@ use lib "$FindBin::Bin/../lib";
 use Uploader::Schema;
 use Config::JFDI;
 
-my $config = Config::JFDI->new(name => "linuxrulz", path => "/home/linuxrulz/catalyst/LinuxRulz/");
+my $config = Config::JFDI->new(name => "uploader", path => "$FindBin::Bin/../");
 
 my $schema = Uploader::Schema->connect($config->get->{'Model::DataBase'}->{'connect_info'});
 
