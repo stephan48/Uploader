@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+# Start/stops the LinuxRulz Catalyst Application
+#
+APPNAME="UploaderWeb"
+APPPATH="/home/stephan/catalyst/Uploader/script/"
+STARTSCRIPT="$APPPATH/uploader_fastcgi.pl"
+TMPDIR="/tmp"
+PIDFILE="$TMPDIR/$APPNAME.pid"
+SOCKETFILE="$TMPDIR/$APPNAME.socket"
+
+function start {
+
+		echo "Starting $APPNAME:"
+		if [ -f $PIDFILE ];
+		then
+			echo "Already Running!"
+		else
+		 	$STARTSCRIPT -l $SOCKETFILE -d -n 2 -p $PIDFILE
+			
+			if [ -f $PIDFILE ];
+			then	
+				echo "done"
+			else
+				echo "an error occured"
+			fi
+		fi
+}
+
+function stop {
+	echo "Stopping $APPNAME:"
+	if [ -f $PIDFILE ];
+	then
+		kill $(head $PIDFILE -n1 -q) 2< /dev/null
+		if [ -f $PIDFILE ];
+		then	
+			echo ""
+			echo "an error occured"
+				
+		else
+			echo ""
+			echo "done"
+		fi
+	else
+		echo "no pid file"
+	fi
+}
+
+case "$1" in
+	start)
+	start;;
+	stop)
+	stop;;
+	restart)
+	stop
+	sleep 3;
+	start;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+		;;
+esac
+
+exit 0
+

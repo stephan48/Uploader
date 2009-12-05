@@ -1,0 +1,8 @@
+[% IF no_wrapper;
+        content;
+		debug("Passing page through as text: $template.name");
+    ELSE;
+        wrapper = wrapper || 'design.tt2';
+        content WRAPPER $wrapper;
+    END;
+-%]

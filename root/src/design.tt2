@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>[% title %]</title>
+    <base href="[% c.req.base %]" />
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="menu">
+[% IF !c.user_exists %]
+		<a href="/login/login">Login</a><br />
+[% ELSE %]
+        <a href="/login/logout">Logout</a><br />
+[% END %]
+		<a href="/zwecke">Zweckliste</a><br />
+[% IF !c.user_exists %]
+		<a href="/files">Fileliste</a><br/>
+[% END %]
+    </div>
+    <div id="content">
+[% IF error_msg %]
+        <div class="error">
+[% error_msg %]
+        </div>
+[% END %]
+[% IF notice_msg %]
+        <div class="notice">
+[% notice_msg %]
+        </div>
+[% END %]
+[% IF success_msg %]
+        <div class="success">
+[% success_msg %]
+        </div>
+[% END %]
+<!-- content template //-->
+        [% content  %]
+<!-- end //-->
+	</div>
+</body>
+</html>
+
